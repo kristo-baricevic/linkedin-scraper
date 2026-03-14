@@ -105,6 +105,9 @@ export default function ProfileCard({ profile }) {
                   {item.title && <span className="font-medium">{item.title}</span>}
                   {item.company && <span className="text-slate-600"> at {item.company}</span>}
                   {item.dates && <span className="block text-sm text-slate-500">{item.dates}</span>}
+                  {item.description && (
+                    <p className="mt-2 text-sm text-slate-600 whitespace-pre-wrap">{item.description}</p>
+                  )}
                 </div>
               </li>
             ))}
