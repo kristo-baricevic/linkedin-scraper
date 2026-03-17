@@ -20,7 +20,7 @@ The React PDF library was also fairly straight forward to implement, and I creat
 
 2. **Set your Apify API token**
 
-   Copy `.env.example` to `.env` and set your token (from [Apify Console → Integrations](https://console.apify.com/account/integrations)):
+   Copy `.env.example` to `.env` and set your token:
 
    ```bash
    cp .env.example .env
