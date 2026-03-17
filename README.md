@@ -38,4 +38,4 @@ The React PDF library was also fairly straight forward to implement, and I creat
 ## Apify
 
 - Actor: `harvestapi/linkedin-profile-search`
-- API runs require a **paid** Apify plan
+- API runs require an Apify account
