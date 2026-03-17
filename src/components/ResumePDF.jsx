@@ -61,13 +61,13 @@ const styles = StyleSheet.create({
   name: { fontSize: 18, fontWeight: "bold", marginBottom: 4 },
   headline: { fontSize: 11, color: "#374151", marginBottom: 2 },
   location: { fontSize: 9, color: "#6b7280" },
-  section: { marginBottom: 14 },
+  section: { marginBottom: 18, paddingBottom: 8 },
   sectionTitle: { fontSize: 12, fontWeight: "bold", marginBottom: 8 },
-  item: { marginBottom: 10 },
+  item: { marginBottom: 12, breakInside: "avoid" },
   itemTitle: { fontWeight: "bold" },
   itemSub: { color: "#6b7280", marginTop: 2 },
   itemDates: { fontSize: 9, color: "#9ca3af", marginTop: 2 },
-  itemDescription: { fontSize: 9, color: "#374151", marginTop: 4, lineHeight: 1.35 },
+  itemDescription: { fontSize: 9, color: "#374151", marginTop: 4, lineHeight: 1.2 },
 });
 
 export default function ResumePDF({ profile }) {
@@ -116,7 +116,7 @@ export default function ResumePDF({ profile }) {
         </View>
 
         {experiences.length > 0 && (
-          <View style={styles.section} wrap={false}>
+          <View style={styles.section}>
             <Text style={styles.sectionTitle}>Experience</Text>
             {experiences.map((item, i) => (
               <View key={i} style={styles.item}>
@@ -127,19 +127,22 @@ export default function ResumePDF({ profile }) {
                 {item.dates && (
                   <Text style={styles.itemDates}>{item.dates}</Text>
                 )}
-                {item.description &&
-                  item.description.split("\n").map((line, j) => (
-                    <Text key={j} style={styles.itemDescription}>
-                      {line.trim() || " "}
-                    </Text>
-                  ))}
+                {item.description && (
+                  <Text style={styles.itemDescription}>
+                    {item.description
+                      .split("\n")
+                      .flatMap((line, j) =>
+                        j === 0 ? [line.trim() || " "] : ["\n", line.trim() || " "]
+                      )}
+                  </Text>
+                )}
               </View>
             ))}
           </View>
         )}
 
         {education.length > 0 && (
-          <View style={styles.section} wrap={false}>
+          <View style={styles.section}>
             <Text style={styles.sectionTitle}>Education</Text>
             {education.map((item, i) => (
               <View key={i} style={styles.item}>

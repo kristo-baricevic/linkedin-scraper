@@ -164,7 +164,13 @@ app.post("/api/scrape", async (req, res) => {
     res.json(profile);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: err.message || "Scrape failed" });
+    const isNotFound =
+      /not found|no profile|failed to scrape|failed to map/i.test(err.message);
+    const message = isNotFound
+      ? "That LinkedIn profile couldn't be found. Please check the URL or username and try again."
+      : err.message || "Something went wrong. Please try again.";
+    const status = isNotFound ? 404 : 500;
+    res.status(status).json({ error: message });
   }
 });
 
