@@ -1,6 +1,6 @@
 # LinkedIn Profile Scraper
 
-Uses [HarvestAPI LinkedIn Profile Search](https://apify.com/harvestapi/linkedin-profile-search) on Apify (paid plan required for API access).
+Uses [HarvestAPI LinkedIn Profile Search](https://apify.com/harvestapi/linkedin-profile-search) on Apify.
 
 ## Decision making process
 
